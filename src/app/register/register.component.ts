@@ -11,25 +11,22 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
 
-  constructor(private authService: AuthService, private alertify:AlertifyService) {}
+  constructor(private authService: AuthService, private alertify: AlertifyService) {}
 
   ngOnInit() {}
 
   register() {
     this.authService.register(this.model).subscribe(
       () => {
-        this.alertify.success('Registration Successful');
+        this.alertify.success('registration successful');
       },
       error => {
-        //TODO: há um problema quando um dos campos do Registration não estão preenchidos
-        //this.alertify.error(error);
-        this.alertify.error('Ocorreu um erro');
+        this.alertify.error(error);
       }
     );
   }
 
   cancel() {
     this.cancelRegister.emit(false);
-    console.log('cancelled');
   }
 }

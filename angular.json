@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "datingapp-spa": {
+    "DatingApp-SPA": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,12 +13,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/datingapp-spa",
+            "outputPath": "dist/DatingApp-SPA",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -26,7 +26,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/alertifyjs/build/alertify.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -41,6 +43,7 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -62,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "datingapp-spa:build"
+            "browserTarget": "DatingApp-SPA:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "datingapp-spa:build:production"
+              "browserTarget": "DatingApp-SPA:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "datingapp-spa:build"
+            "browserTarget": "DatingApp-SPA:build"
           }
         },
         "test": {
@@ -110,15 +113,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "datingapp-spa:serve"
+            "devServerTarget": "DatingApp-SPA:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "datingapp-spa:serve:production"
+              "devServerTarget": "DatingApp-SPA:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "datingapp-spa"
+    }
+  },
+  "defaultProject": "DatingApp-SPA",
+  "cli": {
+    "analytics": "baf1ac37-65af-4b20-a1f8-05b988fc83c4"
+  }
 }
